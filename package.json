@@ -1,0 +1,47 @@
+{
+  "name": "cordova-plugin-firebase-dynamiclinks",
+  "version": "7.0.2",
+  "description": "Cordova plugin for Firebase Dynamic Links",
+  "types": "./types/index.d.ts",
+  "cordova": {
+    "id": "cordova-plugin-firebase-dynamiclinks",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks.git"
+  },
+  "keywords": [
+    "Firebase Invites",
+    "Firebase",
+    "Invites",
+    "App Invites",
+    "Google App Invites",
+    "Firebase Dynamic Links",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "author": "Maksim Chemerisuk <chemerisuk@gmail.com> (https://github.com/chemerisuk)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks/issues"
+  },
+  "homepage": "https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks#readme",
+  "funding": "https://github.com/chemerisuk/cordova-plugin-firebase-dynamiclinks?sponsor=1",
+  "scripts": {
+    "preversion": "npm run docs && rm -rf docs",
+    "version": "perl -i -pe 's/(version=)\"\\d+\\.\\d+\\.\\d+\"/$1\"'$npm_package_version'\"$2/' plugin.xml && git add .",
+    "postversion": "git push && git push --tags",
+    "predocs": "tsc www/* --declaration --allowJs --checkJs --lib es2015,dom --emitDeclarationOnly --outDir types",
+    "docs": "typedoc && perl -i -pe 's/README.md#/#/g' ./docs/README.md",
+    "postdocs": "perl -i -0pe 's/(<!-- TypedocGenerated -->).*/$1\n\n/gms' README.md && cat ./docs/README.md >> README.md"
+  },
+  "devDependencies": {
+    "typedoc": "^0.23.9",
+    "typedoc-plugin-markdown": "^3.13.4"
+  }
+}
